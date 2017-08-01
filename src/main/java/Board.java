@@ -28,16 +28,9 @@ public class Board {
         for (int rowIndex = numberOfRows()-1; rowIndex > 0 ; rowIndex--) {
             for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
                 if (cellTable[columnIndex][rowIndex-1] != 0) {
-                    if (cellTable[columnIndex][rowIndex] == cellTable[columnIndex][rowIndex - 1]) {
-                        cellTable[columnIndex][rowIndex] = 2 * cellTable[columnIndex][rowIndex - 1];
+                        cellTable[columnIndex][rowIndex] += cellTable[columnIndex][rowIndex - 1];
                         cellTable[columnIndex][rowIndex - 1] = 0;
                         aCellMoved = true;
-                    }
-                    if (cellTable[columnIndex][rowIndex] == 0) {
-                        cellTable[columnIndex][rowIndex] = cellTable[columnIndex][rowIndex - 1];
-                        cellTable[columnIndex][rowIndex - 1] = 0;
-                        aCellMoved = true;
-                    }
                 }
             }
         }
