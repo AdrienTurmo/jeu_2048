@@ -1,17 +1,17 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.Arrays;
 
 public class Board {
     int[][] cellTable;
 
-    public Board(int nbRow, int nbColumn) {
-        cellTable = new int[nbRow][nbColumn];
-        for (int rowIndex = 0; rowIndex < 4 ; rowIndex++) {
-            for (int columnIndex = 0; columnIndex < 4 ; columnIndex++) {
-                cellTable[rowIndex][columnIndex] = 0;
+    public Board(int nbColumns, int nbRows) {
+        cellTable = new int[nbColumns][nbRows];
+
+        for (int columnIndex = 0; columnIndex < nbColumns ; columnIndex++) {
+            for (int rowIndex = 0; rowIndex < nbRows ; rowIndex++) {
+                cellTable[columnIndex][rowIndex] = 0;
             }
         }
+
     }
 
     public void put2AtPosition(int columnIndex, int rowIndex) {
@@ -23,7 +23,25 @@ public class Board {
     }
 
     public boolean moveCellsUpByOne() {
-        throw new NotImplementedException();
+        boolean aCellMoved = false;
+
+        for (int rowIndex = numberOfRows()-1; rowIndex > 0 ; rowIndex--) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
+                if (cellTable[columnIndex][rowIndex-1] != 0) {
+                    if (cellTable[columnIndex][rowIndex] == cellTable[columnIndex][rowIndex - 1]) {
+                        cellTable[columnIndex][rowIndex] = 2 * cellTable[columnIndex][rowIndex - 1];
+                        cellTable[columnIndex][rowIndex - 1] = 0;
+                        aCellMoved = true;
+                    }
+                    if (cellTable[columnIndex][rowIndex] == 0) {
+                        cellTable[columnIndex][rowIndex] = cellTable[columnIndex][rowIndex - 1];
+                        cellTable[columnIndex][rowIndex - 1] = 0;
+                        aCellMoved = true;
+                    }
+                }
+            }
+        }
+        return aCellMoved;
     }
 
     private int numberOfRows() {

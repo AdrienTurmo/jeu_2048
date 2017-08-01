@@ -27,4 +27,23 @@ public class BoardTest {
 
         assertThat(board.valueAtPosition(0, 0)).isEqualTo(2);
     }
+
+    @Test
+    public void should_move_up_cells_by_one() throws Exception {
+        board.put2AtPosition(0,0);
+        boolean hasMoved = board.moveCellsUpByOne();
+
+        assertThat(hasMoved).isTrue();
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(2);
+    }
+
+    @Test
+    public void cell_should_not_move_and_return_false() throws Exception {
+        board.put2AtPosition(0,3);
+        boolean hasMoved = board.moveCellsUpByOne();
+
+        assertThat(hasMoved).isFalse();
+        assertThat(board.valueAtPosition(0,3)).isEqualTo(2);
+    }
 }
