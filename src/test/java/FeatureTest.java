@@ -45,4 +45,24 @@ public class FeatureTest {
         inOrder.verify(consolePrinter).print("---------");
 
     }
+
+    @Test
+    public void should_move_down() throws Exception {
+        board.put2AtPosition(0, 3);
+
+        game.moveDown();
+        game.printBoard();
+
+        InOrder inOrder = inOrder(consolePrinter);
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|2| | | |");
+        inOrder.verify(consolePrinter).print("---------");
+
+    }
 }
