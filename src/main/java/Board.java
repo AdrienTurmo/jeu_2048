@@ -12,8 +12,8 @@ public class Board {
         }
     }
 
-    public void put2AtPosition(int row, int column) {
-        throw new NotImplementedException();
+    public void put2AtPosition(int rowIndex, int columnIndex) {
+        cellTable[rowIndex][columnIndex] = 2;
     }
 
     public int valueAtPosition(int rowIndex, int columnIndex) {

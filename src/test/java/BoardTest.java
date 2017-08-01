@@ -21,5 +21,10 @@ public class BoardTest {
         }
     }
 
+    @Test
+    public void should_put_2_in_the_0_0_cell() throws Exception {
+        board.put2AtPosition(0, 0);
 
+        assertThat(board.valueAtPosition(0, 0)).isEqualTo(2);
+    }
 }
