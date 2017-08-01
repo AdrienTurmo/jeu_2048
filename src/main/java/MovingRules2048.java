@@ -1,5 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class MovingRules2048 {
 
     public boolean moveCellsUp(Board board) {
@@ -19,7 +17,8 @@ public class MovingRules2048 {
             for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
 
                 int cellBelowValue = board.valueAtPosition(columnIndex, rowIndex - 1);
-                if (cellBelowValue != 0) {
+                int cellValue = board.valueAtPosition(columnIndex, rowIndex);
+                if (cellBelowValue != 0 && (cellValue == 0|| cellValue == cellBelowValue )) {
                     board.addValueAtPosition(cellBelowValue, columnIndex, rowIndex);
                     board.setValueToZeroAtPosition(columnIndex, rowIndex - 1);
                     aCellMoved = true;
