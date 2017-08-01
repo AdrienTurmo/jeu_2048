@@ -1,4 +1,4 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.Arrays;
 
 public class Board {
     int[][] cellTable;
@@ -20,4 +20,24 @@ public class Board {
         return cellTable[rowIndex][columnIndex];
     }
 
+    public int numberOfRows() {
+        return cellTable[0].length;
+    }
+
+    public int numberOfColumns() {
+        return cellTable.length;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return Arrays.equals(this.cellTable, board.cellTable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(cellTable);
+    }
 }
