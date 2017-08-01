@@ -53,7 +53,7 @@ public class MovingRules2048Test {
     }
 
     @Test
-    public void should_merge_two_cells_if_they_have_the_same_value() throws Exception {
+    public void move_up_should_merge_two_cells_if_they_have_the_same_value() throws Exception {
         board.put2AtPosition(0,3);
         board.put2AtPosition(0,2);
         boolean boardHasMoved = movingRules2048.moveCellsUp(board);
@@ -66,7 +66,7 @@ public class MovingRules2048Test {
     }
 
     @Test
-    public void should_not_merge_two_cells_if_they_have_different_values() throws Exception {
+    public void move_up_should_not_merge_two_cells_if_they_have_different_values() throws Exception {
         board.addValueAtPosition(4,0,3);
         board.put2AtPosition(0,2);
         boolean boardHasMoved = movingRules2048.moveCellsUp(board);
@@ -76,5 +76,33 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(0,2)).isEqualTo(2);
         assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
         assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+    }
+
+    @Test
+    public void move_down_should_merge_two_cells_if_they_have_the_same_value() throws Exception {
+        board.put2AtPosition(1,3);
+        board.put2AtPosition(1,2);
+
+        boolean boardHasMoved = movingRules2048.moveCellsDown(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(1,3)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,2)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,0)).isEqualTo(4);
+    }
+
+    @Test
+    public void move_down_should_not_merge_two_cells_if_they_have_different_values() throws Exception {
+        board.addValueAtPosition(4,1,3);
+        board.put2AtPosition(1,2);
+
+        boolean boardHasMoved = movingRules2048.moveCellsDown(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(1,3)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,2)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(1,0)).isEqualTo(2);
     }
 }

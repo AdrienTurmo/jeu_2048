@@ -45,10 +45,13 @@ public class MovingRules2048 {
             for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
 
                 int cellUpwardValue = board.valueAtPosition(columnIndex, rowIndex + 1);
+                int cellValue = board.valueAtPosition(columnIndex, rowIndex);
                 if (cellUpwardValue != 0) {
-                    board.addValueAtPosition(cellUpwardValue, columnIndex, rowIndex);
-                    board.setValueToZeroAtPosition(columnIndex, rowIndex + 1);
-                    aCellMoved = true;
+                    if (cellUpwardValue != 0 && (cellValue == 0|| cellValue == cellUpwardValue)) {
+                        board.addValueAtPosition(cellUpwardValue, columnIndex, rowIndex);
+                        board.setValueToZeroAtPosition(columnIndex, rowIndex + 1);
+                        aCellMoved = true;
+                    }
                 }
 
             }
