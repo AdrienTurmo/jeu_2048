@@ -86,4 +86,25 @@ public class FeatureTest {
         inOrder.verify(consolePrinter).print("---------");
 
     }
+
+    @Test
+    public void should_not_merge_cells_if_they_have_different_values() throws Exception {
+        board.addValueAtPosition(4,0, 3);
+        board.put2AtPosition(0, 2);
+
+        game.moveUp();
+        game.printBoard();
+
+        InOrder inOrder = inOrder(consolePrinter);
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|4| | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|2| | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+
+    }
 }
