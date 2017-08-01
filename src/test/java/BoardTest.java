@@ -28,5 +28,23 @@ public class BoardTest {
         assertThat(board.valueAtPosition(0, 0)).isEqualTo(2);
     }
 
+    @Test
+    public void should_add_specified_value() throws Exception {
+        board.put2AtPosition(0,0);
 
+        board.addValueAtPosition(5,1,1);
+        board.addValueAtPosition(2,0,0);
+
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(4);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(5);
+    }
+
+    @Test
+    public void should_set_value_at_zero() throws Exception {
+        board.put2AtPosition(0,0);
+
+        board.setValueToZeroAtPosition(0,0);
+
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+    }
 }

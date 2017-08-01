@@ -30,7 +30,30 @@ public class MovingRules2048 {
         return aCellMoved;
     }
 
-    public void moveCellsDown(Board board) {
-        throw new NotImplementedException();
+    public boolean moveCellsDown(Board board) {
+        boolean boardMoved = false;
+
+        while (moveCellsDownOnce(board)) {
+            boardMoved = true;
+        }
+
+        return boardMoved;
+    }
+
+    private boolean moveCellsDownOnce(Board board) {
+        boolean aCellMoved = false;
+        for (int rowIndex = 0; rowIndex < board.numberOfRows()-1; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
+
+                int cellUpwardValue = board.valueAtPosition(columnIndex, rowIndex + 1);
+                if (cellUpwardValue != 0) {
+                    board.addValueAtPosition(cellUpwardValue, columnIndex, rowIndex);
+                    board.setValueToZeroAtPosition(columnIndex, rowIndex + 1);
+                    aCellMoved = true;
+                }
+
+            }
+        }
+        return aCellMoved;
     }
 }

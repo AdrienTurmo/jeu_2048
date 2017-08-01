@@ -20,15 +20,15 @@ public class MovingRules2048Test {
     }
 
     @Test
-    public void should_move_up_the_cell_to_the_top() throws Exception {
+    public void should_move_the_cell_to_the_top() throws Exception {
         board.put2AtPosition(0,0);
         boolean boardHasMoved = movingRules2048.moveCellsUp(board);
 
         assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
-        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
-        assertThat(board.valueAtPosition(0,2)).isEqualTo(0);
         assertThat(board.valueAtPosition(0,3)).isEqualTo(2);
+        assertThat(board.valueAtPosition(0,2)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
     }
 
     @Test
@@ -38,6 +38,18 @@ public class MovingRules2048Test {
 
         assertThat(boardHasMoved).isFalse();
         assertThat(board.valueAtPosition(0,3)).isEqualTo(2);
+    }
+
+    @Test
+    public void should_move_the_cell_to_the_bottom() throws Exception {
+        board.put2AtPosition(0,3);
+        boolean boardHasMoved = movingRules2048.moveCellsDown(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(0,3)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,2)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(2);
     }
 
 }
