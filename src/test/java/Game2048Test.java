@@ -29,4 +29,5 @@ public class Game2048Test {
 
         verify(movingRules2048).moveCellsUp(board);
     }
+
 }

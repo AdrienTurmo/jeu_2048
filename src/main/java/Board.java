@@ -22,26 +22,12 @@ public class Board {
         return cellTable[columnIndex][rowIndex];
     }
 
-    public boolean moveCellsUpByOne() {
-        boolean aCellMoved = false;
 
-        for (int rowIndex = numberOfRows()-1; rowIndex > 0 ; rowIndex--) {
-            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
-                if (cellTable[columnIndex][rowIndex-1] != 0) {
-                        cellTable[columnIndex][rowIndex] += cellTable[columnIndex][rowIndex - 1];
-                        cellTable[columnIndex][rowIndex - 1] = 0;
-                        aCellMoved = true;
-                }
-            }
-        }
-        return aCellMoved;
-    }
-
-    private int numberOfRows() {
+    public int numberOfRows() {
         return cellTable[0].length;
     }
 
-    private int numberOfColumns() {
+    public int numberOfColumns() {
         return cellTable.length;
     }
 
@@ -56,5 +42,13 @@ public class Board {
     @Override
     public int hashCode() {
         return Arrays.hashCode(cellTable);
+    }
+
+    public void addValueAtPosition(int value, int columnIndex, int rowIndex) {
+        cellTable[columnIndex][rowIndex] += value;
+    }
+
+    public void setValueToZeroAtPosition(int columnIndex, int rowIndex) {
+        cellTable[columnIndex][rowIndex] = 0;
     }
 }

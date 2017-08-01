@@ -1,5 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class Game2048 {
     private Board board;
     private final MovingRules2048 movingRules2048;
@@ -16,6 +14,6 @@ public class Game2048 {
     }
 
     public void printBoard() {
-        throw new NotImplementedException();
+        
     }
 }
