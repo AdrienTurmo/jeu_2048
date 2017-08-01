@@ -20,7 +20,4 @@ public class Board {
         return cellTable[rowIndex][columnIndex];
     }
 
-    public void moveCellsUp() {
-        throw new NotImplementedException();
-    }
 }
