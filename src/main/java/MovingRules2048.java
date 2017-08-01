@@ -1,3 +1,5 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class MovingRules2048 {
 
     public boolean moveCellsUp(Board board) {
@@ -28,4 +30,7 @@ public class MovingRules2048 {
         return aCellMoved;
     }
 
+    public void moveCellsDown(Board board) {
+        throw new NotImplementedException();
+    }
 }

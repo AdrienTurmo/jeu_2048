@@ -22,7 +22,6 @@ public class Board {
         return cellTable[columnIndex][rowIndex];
     }
 
-
     public int numberOfRows() {
         return cellTable[0].length;
     }

@@ -15,11 +15,11 @@ public class Game2048 {
         movingRules2048.moveCellsUp(board);
     }
 
-    public void printBoard() {
-        boardPrinter.printBoard(board);
+    public void moveDown() {
+        movingRules2048.moveCellsDown(board);
     }
 
-    public void moveDown() {
-        throw new NotImplementedException();
+    public void printBoard() {
+        boardPrinter.printBoard(board);
     }
 }

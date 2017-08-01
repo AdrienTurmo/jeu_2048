@@ -30,4 +30,10 @@ public class Game2048Test {
         verify(movingRules2048).moveCellsUp(board);
     }
 
+    @Test
+    public void should_move_cells_down() throws Exception {
+        game.moveDown();
+
+        verify(movingRules2048).moveCellsDown(board);
+    }
 }
