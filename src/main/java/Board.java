@@ -19,4 +19,8 @@ public class Board {
     public int valueAtPosition(int rowIndex, int columnIndex) {
         return cellTable[rowIndex][columnIndex];
     }
+
+    public void moveCellsUp() {
+        throw new NotImplementedException();
+    }
 }
