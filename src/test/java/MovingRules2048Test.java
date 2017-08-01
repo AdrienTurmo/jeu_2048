@@ -20,7 +20,7 @@ public class MovingRules2048Test {
     }
 
     @Test
-    public void should_move_up_cells_by_one() throws Exception {
+    public void should_move_up_the_cell_to_the_top() throws Exception {
         board.put2AtPosition(0,0);
         boolean boardHasMoved = movingRules2048.moveCellsUp(board);
 
