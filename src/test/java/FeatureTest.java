@@ -65,4 +65,25 @@ public class FeatureTest {
         inOrder.verify(consolePrinter).print("---------");
 
     }
+
+    @Test
+    public void should_move_up_and_merge_cells_if_they_have_same_value() throws Exception {
+        board.put2AtPosition(0, 3);
+        board.put2AtPosition(0, 2);
+
+        game.moveUp();
+        game.printBoard();
+
+        InOrder inOrder = inOrder(consolePrinter);
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|4| | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | | |");
+        inOrder.verify(consolePrinter).print("---------");
+
+    }
 }
