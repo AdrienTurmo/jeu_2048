@@ -1,3 +1,5 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.Arrays;
 
 public class Board {
@@ -12,19 +14,23 @@ public class Board {
         }
     }
 
-    public void put2AtPosition(int rowIndex, int columnIndex) {
-        cellTable[rowIndex][columnIndex] = 2;
+    public void put2AtPosition(int columnIndex, int rowIndex) {
+        cellTable[columnIndex][rowIndex] = 2;
     }
 
-    public int valueAtPosition(int rowIndex, int columnIndex) {
-        return cellTable[rowIndex][columnIndex];
+    public int valueAtPosition(int columnIndex, int rowIndex) {
+        return cellTable[columnIndex][rowIndex];
     }
 
-    public int numberOfRows() {
+    public boolean moveCellsUpByOne() {
+        throw new NotImplementedException();
+    }
+
+    private int numberOfRows() {
         return cellTable[0].length;
     }
 
-    public int numberOfColumns() {
+    private int numberOfColumns() {
         return cellTable.length;
     }
 

@@ -1,27 +1,28 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+@RunWith(MockitoJUnitRunner.class)
 public class MovingRules2048Test {
 
     private MovingRules2048 movingRules2048;
+    @Mock
     private Board board;
 
     @Before
     public void setUp() throws Exception {
         movingRules2048 = new MovingRules2048();
-        board = new Board(4, 4);
     }
 
     @Test
     public void should_move_cells_up() throws Exception {
-        board.put2AtPosition(0, 0);
-        Board expectedBoard = new Board(4, 4);
-        expectedBoard.put2AtPosition(0, 0);
+        Mockito.when(board.moveCellsUpByOne()).thenReturn(true,true,true,false);
+        movingRules2048.moveCellsUp(board);
 
-        Board newBoard = movingRules2048.moveCellsUp(board);
-
-        assertThat(newBoard).isEqualTo(expectedBoard);
+        Mockito.inOrder(board).verify(board,Mockito.calls(4)).moveCellsUpByOne();
     }
+
 }

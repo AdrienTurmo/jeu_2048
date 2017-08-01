@@ -12,7 +12,7 @@ public class Game2048 {
     }
 
     public void moveUp() {
-        board = movingRules2048.moveCellsUp(board);
+        movingRules2048.moveCellsUp(board);
     }
 
     public void printBoard() {
