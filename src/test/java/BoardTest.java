@@ -1,6 +1,12 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BoardTest {
@@ -46,5 +52,41 @@ public class BoardTest {
         board.setValueToZeroAtPosition(0,0);
 
         assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+    }
+
+    @Test
+    public void should_return_a_list_of_zeros_positions_as_simple_entries() throws Exception {
+        //given
+        board.put2AtPosition(0,1);
+        board.put2AtPosition(0,3);
+
+        board.put2AtPosition(1,0);
+        board.put2AtPosition(1,1);
+        board.put2AtPosition(1,3);
+
+        board.put2AtPosition(2,0);
+        board.put2AtPosition(2,1);
+        board.put2AtPosition(2,2);
+        board.put2AtPosition(2,3);
+
+        board.put2AtPosition(3,0);
+        board.put2AtPosition(3,1);
+        board.put2AtPosition(3,3);
+
+        SimpleEntry<Integer,Integer> zeroIn0_0 = new SimpleEntry<>(0, 0);
+        SimpleEntry<Integer,Integer> zeroIn0_2 = new SimpleEntry<>(0, 2);
+        SimpleEntry<Integer,Integer> zeroIn1_2 = new SimpleEntry<>(1, 2);
+        SimpleEntry<Integer,Integer> zeroIn3_2 = new SimpleEntry<>(3, 2);
+
+        List<SimpleEntry> expectedZeros = Arrays.asList(zeroIn0_0,zeroIn0_2,zeroIn1_2,zeroIn3_2);
+
+        //when
+        List<SimpleEntry<Integer, Integer>> zeros = board.positionsOfZeros();
+
+        //then
+        assertThat(zeros).contains(expectedZeros.get(0));
+        assertThat(zeros).contains(expectedZeros.get(1));
+        assertThat(zeros).contains(expectedZeros.get(2));
+        assertThat(zeros).contains(expectedZeros.get(3));
     }
 }

@@ -66,7 +66,7 @@ public class Game2048Test {
         //given
         SimpleEntry<Integer,Integer> zeroIn0_0 = new SimpleEntry<>(0, 0);
         SimpleEntry<Integer,Integer> zeroIn0_2 = new SimpleEntry<>(0, 2);
-        SimpleEntry<Integer,Integer> zeroIn4_0 = new SimpleEntry<>(4, 0);
+        SimpleEntry<Integer,Integer> zeroIn4_0 = new SimpleEntry<>(2, 0);
 
         List<SimpleEntry<Integer,Integer>> zeros = Arrays.asList(zeroIn0_0,zeroIn0_2,zeroIn4_0);
 

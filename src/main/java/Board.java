@@ -1,6 +1,8 @@
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,8 +12,8 @@ public class Board {
     public Board(int nbColumns, int nbRows) {
         cellTable = new int[nbColumns][nbRows];
 
-        for (int columnIndex = 0; columnIndex < nbColumns ; columnIndex++) {
-            for (int rowIndex = 0; rowIndex < nbRows ; rowIndex++) {
+        for (int columnIndex = 0; columnIndex < nbColumns; columnIndex++) {
+            for (int rowIndex = 0; rowIndex < nbRows; rowIndex++) {
                 cellTable[columnIndex][rowIndex] = 0;
             }
         }
@@ -34,6 +36,28 @@ public class Board {
         return cellTable.length;
     }
 
+    public void addValueAtPosition(int value, int columnIndex, int rowIndex) {
+        cellTable[columnIndex][rowIndex] += value;
+    }
+
+    public void setValueToZeroAtPosition(int columnIndex, int rowIndex) {
+        cellTable[columnIndex][rowIndex] = 0;
+    }
+
+    public List<SimpleEntry<Integer, Integer>> positionsOfZeros() {
+        List<SimpleEntry<Integer, Integer>> zeros = new ArrayList<>();
+
+        for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
+                if (valueAtPosition(columnIndex,rowIndex)==0){
+                 zeros.add(new SimpleEntry<>(columnIndex, rowIndex));
+                }
+            }
+        }
+
+        return zeros;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,17 +69,5 @@ public class Board {
     @Override
     public int hashCode() {
         return Arrays.hashCode(cellTable);
-    }
-
-    public void addValueAtPosition(int value, int columnIndex, int rowIndex) {
-        cellTable[columnIndex][rowIndex] += value;
-    }
-
-    public void setValueToZeroAtPosition(int columnIndex, int rowIndex) {
-        cellTable[columnIndex][rowIndex] = 0;
-    }
-
-    public List<AbstractMap.SimpleEntry<Integer, Integer>> positionsOfZeros() {
-        throw new NotImplementedException();
     }
 }
