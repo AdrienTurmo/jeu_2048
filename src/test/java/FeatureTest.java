@@ -113,7 +113,7 @@ public class FeatureTest {
     }
 
     @Test
-    public void when_moving_verticallty_cells_should_merge_only_once() throws Exception {
+    public void when_moving_vertically_cells_should_merge_only_once() throws Exception {
         board.put2AtPosition(1, 3);
         board.put2AtPosition(1, 2);
         board.addValueAtPosition(4,1, 1);
@@ -135,6 +135,39 @@ public class FeatureTest {
         inOrder.verify(consolePrinter).print("| |4| |4|");
         inOrder.verify(consolePrinter).print("---------");
         inOrder.verify(consolePrinter).print("| |4| |4|");
+        inOrder.verify(consolePrinter).print("---------");
+
+    }
+
+    @Test
+    public void can_move_left() throws Exception {
+        board.addValueAtPosition(4,1,3);
+        board.put2AtPosition(3,3);
+
+        board.put2AtPosition(1,2);
+        board.put2AtPosition(3,2);
+
+        board.put2AtPosition(0,1);
+        board.put2AtPosition(1,1);
+        board.put2AtPosition(2,1);
+        board.put2AtPosition(3,1);
+
+        board.put2AtPosition(1,0);
+        board.put2AtPosition(2,0);
+        board.put2AtPosition(3,0);
+
+        game.moveLeft();
+        game.printBoard();
+
+        InOrder inOrder = inOrder(consolePrinter);
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|4|2| | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|4| | | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|4|4| | |");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("|4|2| | |");
         inOrder.verify(consolePrinter).print("---------");
 
     }
