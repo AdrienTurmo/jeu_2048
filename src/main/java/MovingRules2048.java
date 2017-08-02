@@ -138,6 +138,23 @@ public class MovingRules2048 {
     }
 
     private boolean mergeCellsLeft(Board board) {
-        return false;
+        boolean atLeastTwoCellsMerged = false;
+
+        for (int columnIndex = board.numberOfColumns()-1; columnIndex > 0; columnIndex--) {
+            for (int rowIndex = 0; rowIndex < board.numberOfRows(); rowIndex++) {
+
+                int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
+                int rightCellValue = board.valueAtPosition(columnIndex - 1, rowIndex);
+
+                if (rightCellValue == currentCellValue && currentCellValue != 0) {
+                    board.addValueAtPosition(rightCellValue, columnIndex, rowIndex);
+                    board.setValueToZeroAtPosition(columnIndex-1, rowIndex);
+                    atLeastTwoCellsMerged = true;
+                }
+
+            }
+        }
+
+        return atLeastTwoCellsMerged;
     }
 }
