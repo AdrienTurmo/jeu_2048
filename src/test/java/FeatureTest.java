@@ -214,7 +214,6 @@ public class FeatureTest {
     @Test
     public void can_add_a_two_in_a_random_empty_cell() throws Exception {
         //given
-
         board.addValueAtPosition(2,0,3);
         board.addValueAtPosition(4,1,3);
         board.addValueAtPosition(0,2,3);
