@@ -171,4 +171,37 @@ public class FeatureTest {
         inOrder.verify(consolePrinter).print("---------");
 
     }
+
+    @Test
+    public void can_move_right() throws Exception {
+        board.addValueAtPosition(4,1,3);
+        board.put2AtPosition(3,3);
+
+        board.put2AtPosition(1,2);
+        board.put2AtPosition(3,2);
+
+        board.addValueAtPosition(4,0,1);
+        board.addValueAtPosition(4,1,1);
+        board.addValueAtPosition(4,2,1);
+        board.addValueAtPosition(4,3,1);
+
+        board.put2AtPosition(1,0);
+        board.put2AtPosition(2,0);
+        board.put2AtPosition(3,0);
+
+        game.moveRight();
+        game.printBoard();
+
+        InOrder inOrder = inOrder(consolePrinter);
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | |4|2|");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | | |4|");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | |8|8|");
+        inOrder.verify(consolePrinter).print("---------");
+        inOrder.verify(consolePrinter).print("| | |2|4|");
+        inOrder.verify(consolePrinter).print("---------");
+
+    }
 }

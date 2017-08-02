@@ -26,4 +26,8 @@ public class Game2048 {
     public void printBoard() {
         boardPrinter.printBoard(board);
     }
+
+    public void moveRight() {
+        throw new NotImplementedException();
+    }
 }
