@@ -202,6 +202,5 @@ public class FeatureTest {
         inOrder.verify(consolePrinter).print("---------");
         inOrder.verify(consolePrinter).print("| | |2|4|");
         inOrder.verify(consolePrinter).print("---------");
-
     }
 }
