@@ -120,4 +120,19 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(1,0)).isEqualTo(4);
     }
 
+    @Test
+    public void move_up_should_merge_cells_once() throws Exception {
+        board.put2AtPosition(1,3);
+        board.put2AtPosition(1,2);
+        board.addValueAtPosition(4,1,1);
+
+        boolean boardHasMoved = movingRules2048.moveUp(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(1,3)).isEqualTo(4);
+        assertThat(board.valueAtPosition(1,2)).isEqualTo(4);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,0)).isEqualTo(0);
+    }
+
 }
