@@ -1,3 +1,5 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class MovingRules2048 {
 
     public boolean moveUp(Board board) {
@@ -16,13 +18,13 @@ public class MovingRules2048 {
 
     private boolean moveCellsUp(Board board) {
         boolean aCellMoved = false;
-        for (int rowIndex = 0 ; rowIndex < board.numberOfRows()-1; rowIndex++) {
+        for (int rowIndex = 0; rowIndex < board.numberOfRows() - 1; rowIndex++) {
             for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
 
                 int upwardCellValue = board.valueAtPosition(columnIndex, rowIndex + 1);
                 int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
                 if (upwardCellValue == 0 && currentCellValue != 0) {
-                    board.addValueAtPosition(currentCellValue, columnIndex, rowIndex+1);
+                    board.addValueAtPosition(currentCellValue, columnIndex, rowIndex + 1);
                     board.setValueToZeroAtPosition(columnIndex, rowIndex);
                     aCellMoved = true;
                 }
@@ -34,12 +36,12 @@ public class MovingRules2048 {
 
     private boolean mergeCellsUp(Board board) {
         boolean atLeastTwoCellsMerged = false;
-        for (int rowIndex = board.numberOfRows()-1; rowIndex > 0; rowIndex--) {
+        for (int rowIndex = board.numberOfRows() - 1; rowIndex > 0; rowIndex--) {
             for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
 
                 int downwardCellValue = board.valueAtPosition(columnIndex, rowIndex - 1);
                 int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
-                if (currentCellValue == downwardCellValue && currentCellValue !=0) {
+                if (currentCellValue == downwardCellValue && currentCellValue != 0) {
                     board.addValueAtPosition(downwardCellValue, columnIndex, rowIndex);
                     board.setValueToZeroAtPosition(columnIndex, rowIndex - 1);
                     atLeastTwoCellsMerged = true;
@@ -100,4 +102,42 @@ public class MovingRules2048 {
         return atLeastTwoCellsMerged;
     }
 
+    public boolean moveLeft(Board board) {
+        boolean boardMoved = false;
+        while (moveCellsLeft(board)) {
+            boardMoved = true;
+        }
+        boardMoved = mergeCellsLeft(board) || boardMoved;
+        while (moveCellsLeft(board)) {
+            boardMoved = true;
+        }
+
+        return boardMoved;
+    }
+
+    private boolean moveCellsLeft(Board board) {
+        boolean aCellMoved = false;
+
+        for (int columnIndex = 0; columnIndex < board.numberOfColumns() - 1; columnIndex++) {
+            for (int rowIndex = 0; rowIndex < board.numberOfRows(); rowIndex++) {
+
+                int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
+                int leftCellValue = board.valueAtPosition(columnIndex + 1, rowIndex);
+
+                if (leftCellValue == 0 && currentCellValue != 0) {
+                    board.addValueAtPosition(currentCellValue, columnIndex+1, rowIndex);
+                    board.setValueToZeroAtPosition(columnIndex,rowIndex);
+                    aCellMoved = true;
+                }
+
+
+            }
+        }
+
+        return aCellMoved;
+    }
+
+    private boolean mergeCellsLeft(Board board) {
+        return false;
+    }
 }
