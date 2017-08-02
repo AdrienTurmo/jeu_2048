@@ -30,4 +30,8 @@ public class Game2048 {
     public void printBoard() {
         boardPrinter.printBoard(board);
     }
+
+    public void addTwoAtRandom() {
+        throw new NotImplementedException();
+    }
 }
