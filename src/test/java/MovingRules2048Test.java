@@ -243,4 +243,16 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(3,0)).isEqualTo(4);
     }
 
+    @Test
+    public void move_right_should_not_merge_cells_with_different_values() throws Exception {
+        board.put2AtPosition(0,1);
+        board.addValueAtPosition(4,2,1);
+        boolean boardHasMoved = movingRules2048.moveRight(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(2,1)).isEqualTo(2);
+        assertThat(board.valueAtPosition(3,1)).isEqualTo(4);
+    }
 }
