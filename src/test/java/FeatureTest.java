@@ -16,12 +16,12 @@ public class FeatureTest {
     private Game2048 game;
 
     @Mock
-    Printer consolePrinter;
+    Printer printer;
 
     @Before
     public void setUp() throws Exception {
         board = new Board(4,4);
-        boardPrinter = new BoardPrinter(consolePrinter);
+        boardPrinter = new BoardPrinter(printer);
         movingRules2048 = new MovingRules2048();
         game = new Game2048(board, movingRules2048, boardPrinter);
     }
@@ -33,16 +33,16 @@ public class FeatureTest {
         game.moveUp();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|2| | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|2| | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
 
     }
 
@@ -54,16 +54,16 @@ public class FeatureTest {
         game.moveUp();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4| | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4| | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
 
     }
 
@@ -75,16 +75,16 @@ public class FeatureTest {
         game.moveUp();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4| | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|2| | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4| | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|2| | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
 
     }
 
@@ -99,16 +99,16 @@ public class FeatureTest {
         game.moveDown();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4| | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|2| |4| |");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4| | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|2| |4| |");
+        inOrder.verify(printer).print("---------");
 
     }
 
@@ -126,16 +126,16 @@ public class FeatureTest {
         game.moveDown();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| |4| |4|");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| |4| |4|");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| |4| |4|");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| |4| |4|");
+        inOrder.verify(printer).print("---------");
 
     }
 
@@ -159,16 +159,16 @@ public class FeatureTest {
         game.moveLeft();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4|2| | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4| | | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4|4| | |");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("|4|2| | |");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4|2| | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4| | | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4|4| | |");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("|4|2| | |");
+        inOrder.verify(printer).print("---------");
 
     }
 
@@ -192,15 +192,15 @@ public class FeatureTest {
         game.moveRight();
         game.printBoard();
 
-        InOrder inOrder = inOrder(consolePrinter);
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | |4|2|");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | | |4|");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | |8|8|");
-        inOrder.verify(consolePrinter).print("---------");
-        inOrder.verify(consolePrinter).print("| | |2|4|");
-        inOrder.verify(consolePrinter).print("---------");
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | |4|2|");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | | |4|");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | |8|8|");
+        inOrder.verify(printer).print("---------");
+        inOrder.verify(printer).print("| | |2|4|");
+        inOrder.verify(printer).print("---------");
     }
 }
