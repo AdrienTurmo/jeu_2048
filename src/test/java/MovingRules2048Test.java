@@ -153,14 +153,14 @@ public class MovingRules2048Test {
 
     @Test
     public void move_left_should_move_the_cell_to_the_far_left() throws Exception {
-        board.put2AtPosition(0,0);
+        board.put2AtPosition(3,0);
         boolean boardHasMoved = movingRules2048.moveLeft(board);
 
         assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(2);
         assertThat(board.valueAtPosition(1,0)).isEqualTo(0);
         assertThat(board.valueAtPosition(2,0)).isEqualTo(0);
-        assertThat(board.valueAtPosition(3,0)).isEqualTo(2);
+        assertThat(board.valueAtPosition(3,0)).isEqualTo(0);
     }
 
     @Test
@@ -170,10 +170,10 @@ public class MovingRules2048Test {
         boolean boardHasMoved = movingRules2048.moveLeft(board);
 
         assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(4);
         assertThat(board.valueAtPosition(1,0)).isEqualTo(0);
         assertThat(board.valueAtPosition(2,0)).isEqualTo(0);
-        assertThat(board.valueAtPosition(3,0)).isEqualTo(4);
+        assertThat(board.valueAtPosition(3,0)).isEqualTo(0);
     }
 
     @Test
@@ -182,11 +182,11 @@ public class MovingRules2048Test {
         board.addValueAtPosition(4,1,0);
         boolean boardHasMoved = movingRules2048.moveLeft(board);
 
-        assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
-        assertThat(board.valueAtPosition(1,0)).isEqualTo(0);
-        assertThat(board.valueAtPosition(2,0)).isEqualTo(2);
-        assertThat(board.valueAtPosition(3,0)).isEqualTo(4);
+        assertThat(boardHasMoved).isFalse();
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(2);
+        assertThat(board.valueAtPosition(1,0)).isEqualTo(4);
+        assertThat(board.valueAtPosition(2,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(3,0)).isEqualTo(0);
     }
 
     @Test
@@ -198,10 +198,10 @@ public class MovingRules2048Test {
         boolean boardHasMoved = movingRules2048.moveLeft(board);
 
         assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
-        assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
-        assertThat(board.valueAtPosition(2,1)).isEqualTo(4);
-        assertThat(board.valueAtPosition(3,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(2,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(3,1)).isEqualTo(0);
     }
 
     @Test
@@ -212,9 +212,9 @@ public class MovingRules2048Test {
         boolean boardHasMoved = movingRules2048.moveLeft(board);
 
         assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
-        assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
-        assertThat(board.valueAtPosition(2,1)).isEqualTo(2);
-        assertThat(board.valueAtPosition(3,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(2);
+        assertThat(board.valueAtPosition(2,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(3,1)).isEqualTo(0);
     }
 }

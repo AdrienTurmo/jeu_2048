@@ -118,14 +118,14 @@ public class MovingRules2048 {
     private boolean moveCellsLeft(Board board) {
         boolean aCellMoved = false;
 
-        for (int columnIndex = 0; columnIndex < board.numberOfColumns() - 1; columnIndex++) {
+        for (int columnIndex = board.numberOfColumns()-1; columnIndex > 0; columnIndex--) {
             for (int rowIndex = 0; rowIndex < board.numberOfRows(); rowIndex++) {
 
                 int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
-                int leftCellValue = board.valueAtPosition(columnIndex + 1, rowIndex);
+                int rightCellValue = board.valueAtPosition(columnIndex - 1, rowIndex);
 
-                if (leftCellValue == 0 && currentCellValue != 0) {
-                    board.addValueAtPosition(currentCellValue, columnIndex+1, rowIndex);
+                if (rightCellValue == 0 && currentCellValue != 0) {
+                    board.addValueAtPosition(currentCellValue, columnIndex-1, rowIndex);
                     board.setValueToZeroAtPosition(columnIndex,rowIndex);
                     aCellMoved = true;
                 }
@@ -140,15 +140,15 @@ public class MovingRules2048 {
     private boolean mergeCellsLeft(Board board) {
         boolean atLeastTwoCellsMerged = false;
 
-        for (int columnIndex = board.numberOfColumns()-1; columnIndex > 0; columnIndex--) {
+        for (int columnIndex = 0; columnIndex < board.numberOfColumns()-1; columnIndex++) {
             for (int rowIndex = 0; rowIndex < board.numberOfRows(); rowIndex++) {
 
                 int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
-                int rightCellValue = board.valueAtPosition(columnIndex - 1, rowIndex);
+                int leftCellValue = board.valueAtPosition(columnIndex + 1, rowIndex);
 
-                if (rightCellValue == currentCellValue && currentCellValue != 0) {
-                    board.addValueAtPosition(rightCellValue, columnIndex, rowIndex);
-                    board.setValueToZeroAtPosition(columnIndex-1, rowIndex);
+                if (leftCellValue == currentCellValue && currentCellValue != 0) {
+                    board.addValueAtPosition(leftCellValue, columnIndex, rowIndex);
+                    board.setValueToZeroAtPosition(columnIndex+1, rowIndex);
                     atLeastTwoCellsMerged = true;
                 }
 
