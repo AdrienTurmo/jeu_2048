@@ -6,10 +6,7 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -238,12 +235,12 @@ public class FeatureTest {
         board.addValueAtPosition(0,2,0);
         board.addValueAtPosition(0,3,0);
 
-        int initialNumberOfZeros = 6;
+        int initialNumberOfZeros = 7;
         int initialNumberOfTwos = 4;
 
         //when
 
-        game.addTwoAtRandom();
+        game.addTwoInRandomEmptyCell();
         game.printBoard();
 
         //then

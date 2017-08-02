@@ -1,4 +1,8 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.AbstractMap;
 import java.util.Arrays;
+import java.util.List;
 
 public class Board {
     int[][] cellTable;
@@ -49,5 +53,9 @@ public class Board {
 
     public void setValueToZeroAtPosition(int columnIndex, int rowIndex) {
         cellTable[columnIndex][rowIndex] = 0;
+    }
+
+    public List<AbstractMap.SimpleEntry<Integer, Integer>> positionsOfZeros() {
+        throw new NotImplementedException();
     }
 }

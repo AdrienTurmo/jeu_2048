@@ -1,5 +1,8 @@
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.*;
+import java.util.AbstractMap.SimpleEntry;
+
 public class Game2048 {
     private Board board;
     private final MovingRules2048 movingRules2048;
@@ -31,7 +34,16 @@ public class Game2048 {
         boardPrinter.printBoard(board);
     }
 
-    public void addTwoAtRandom() {
-        throw new NotImplementedException();
+    public void addTwoInRandomEmptyCell() {
+        List<SimpleEntry<Integer,Integer>> positionsOfZeros = board.positionsOfZeros();
+
+        if (positionsOfZeros.size() != 0) {
+            Collections.shuffle(positionsOfZeros);
+            int columnIndex = positionsOfZeros.get(0).getKey();
+            int rowIndex = positionsOfZeros.get(0).getValue();
+
+            board.put2AtPosition(columnIndex,rowIndex);
+        }
+
     }
 }
