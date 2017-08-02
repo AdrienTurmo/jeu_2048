@@ -27,13 +27,13 @@ public class Game2048Test {
     public void should_move_cells_up() throws Exception {
         game.moveUp();
 
-        verify(movingRules2048).moveCellsUp(board);
+        verify(movingRules2048).moveUp(board);
     }
 
     @Test
     public void should_move_cells_down() throws Exception {
         game.moveDown();
 
-        verify(movingRules2048).moveCellsDown(board);
+        verify(movingRules2048).moveDown(board);
     }
 }

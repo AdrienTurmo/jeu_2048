@@ -1,5 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class Game2048 {
     private Board board;
     private final MovingRules2048 movingRules2048;
@@ -12,11 +10,11 @@ public class Game2048 {
     }
 
     public void moveUp() {
-        movingRules2048.moveCellsUp(board);
+        movingRules2048.moveUp(board);
     }
 
     public void moveDown() {
-        movingRules2048.moveCellsDown(board);
+        movingRules2048.moveDown(board);
     }
 
     public void printBoard() {

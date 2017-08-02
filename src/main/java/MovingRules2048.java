@@ -1,6 +1,6 @@
 public class MovingRules2048 {
 
-    public boolean moveCellsUp(Board board) {
+    public boolean moveUp(Board board) {
 
         boolean boardMoved = false;
 
@@ -16,10 +16,10 @@ public class MovingRules2048 {
         for (int rowIndex = board.numberOfRows() - 1; rowIndex > 0; rowIndex--) {
             for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
 
-                int cellBelowValue = board.valueAtPosition(columnIndex, rowIndex - 1);
-                int cellValue = board.valueAtPosition(columnIndex, rowIndex);
-                if (cellBelowValue != 0 && (cellValue == 0 || cellValue == cellBelowValue)) {
-                    board.addValueAtPosition(cellBelowValue, columnIndex, rowIndex);
+                int belowCellValue = board.valueAtPosition(columnIndex, rowIndex - 1);
+                int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
+                if (belowCellValue != 0 && (currentCellValue == 0 || currentCellValue == belowCellValue)) {
+                    board.addValueAtPosition(belowCellValue, columnIndex, rowIndex);
                     board.setValueToZeroAtPosition(columnIndex, rowIndex - 1);
                     aCellMoved = true;
                 }
@@ -29,14 +29,54 @@ public class MovingRules2048 {
         return aCellMoved;
     }
 
-    public boolean moveCellsDown(Board board) {
+    public boolean moveDown(Board board) {
         boolean boardMoved = false;
-
-        while (moveCellsDownOnce(board)) {
+        while (moveCellsDown(board)) {
+            boardMoved = true;
+        }
+        boardMoved = mergeCellsDown(board) || boardMoved;
+        while (moveCellsDown(board)) {
             boardMoved = true;
         }
 
         return boardMoved;
+    }
+
+    private boolean mergeCellsDown(Board board) {
+        boolean atLeastTwoCellsMerged = false;
+        for (int rowIndex = 0; rowIndex < board.numberOfRows() - 1; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
+
+                int upwardCellValue = board.valueAtPosition(columnIndex, rowIndex + 1);
+                int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
+                if (currentCellValue == upwardCellValue) {
+                    board.addValueAtPosition(upwardCellValue, columnIndex, rowIndex);
+                    board.setValueToZeroAtPosition(columnIndex, rowIndex + 1);
+                    atLeastTwoCellsMerged = true;
+                }
+
+            }
+        }
+        return atLeastTwoCellsMerged;
+    }
+
+    private boolean moveCellsDown(Board board) {
+        boolean aCellMoved = false;
+        for (int rowIndex = board.numberOfRows() - 1; rowIndex > 0; rowIndex--) {
+            for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
+
+                int bellowCellValue = board.valueAtPosition(columnIndex, rowIndex - 1);
+                int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
+
+                if (bellowCellValue == 0 && currentCellValue != 0) {
+                    board.addValueAtPosition(currentCellValue, columnIndex, rowIndex - 1);
+                    board.setValueToZeroAtPosition(columnIndex, rowIndex);
+                    aCellMoved = true;
+                }
+
+            }
+        }
+        return aCellMoved;
     }
 
     private boolean moveCellsDownOnce(Board board) {
@@ -45,8 +85,8 @@ public class MovingRules2048 {
             for (int columnIndex = 0; columnIndex < board.numberOfColumns(); columnIndex++) {
 
                 int cellUpwardValue = board.valueAtPosition(columnIndex, rowIndex + 1);
-                int cellValue = board.valueAtPosition(columnIndex, rowIndex);
-                if (cellUpwardValue != 0 && (cellValue == 0 || cellValue == cellUpwardValue)) {
+                int currentCellValue = board.valueAtPosition(columnIndex, rowIndex);
+                if (cellUpwardValue != 0 && (currentCellValue == 0 || currentCellValue == cellUpwardValue)) {
                     board.addValueAtPosition(cellUpwardValue, columnIndex, rowIndex);
                     board.setValueToZeroAtPosition(columnIndex, rowIndex + 1);
                     aCellMoved = true;
