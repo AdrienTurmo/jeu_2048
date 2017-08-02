@@ -105,4 +105,5 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(1,1)).isEqualTo(4);
         assertThat(board.valueAtPosition(1,0)).isEqualTo(2);
     }
+
 }
