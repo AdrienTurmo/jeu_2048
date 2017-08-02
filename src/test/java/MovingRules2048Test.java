@@ -150,23 +150,9 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(1,0)).isEqualTo(4);
     }
 
-    @Test
-    public void move_down_should_merge_cells_by_the_bottom() throws Exception {
-        board.put2AtPosition(1,3);
-        board.put2AtPosition(1,2);
-        board.put2AtPosition(1,0);
-
-        boolean boardHasMoved = movingRules2048.moveDown(board);
-
-        assertThat(boardHasMoved).isTrue();
-        assertThat(board.valueAtPosition(1,3)).isEqualTo(0);
-        assertThat(board.valueAtPosition(1,2)).isEqualTo(0);
-        assertThat(board.valueAtPosition(1,1)).isEqualTo(2);
-        assertThat(board.valueAtPosition(1,0)).isEqualTo(4);
-    }
 
     @Test
-    public void move_left_should_move_the_cell_to_the_bottom() throws Exception {
+    public void move_left_should_move_the_cell_to_the_far_left() throws Exception {
         board.put2AtPosition(0,0);
         boolean boardHasMoved = movingRules2048.moveLeft(board);
 
@@ -215,6 +201,20 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
         assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
         assertThat(board.valueAtPosition(2,1)).isEqualTo(4);
+        assertThat(board.valueAtPosition(3,1)).isEqualTo(4);
+    }
+
+    @Test
+    public void move_left_should_merge_cells_from_the_left() throws Exception {
+        board.put2AtPosition(1,1);
+        board.put2AtPosition(2,1);
+        board.put2AtPosition(3,1);
+        boolean boardHasMoved = movingRules2048.moveLeft(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
+        assertThat(board.valueAtPosition(2,1)).isEqualTo(2);
         assertThat(board.valueAtPosition(3,1)).isEqualTo(4);
     }
 }
