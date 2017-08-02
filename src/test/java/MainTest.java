@@ -22,7 +22,6 @@ public class MainTest {
             }
         }
 
-        /*
         game.printBoard();
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -34,18 +33,22 @@ public class MainTest {
             switch (nextMove) {
                 case "up":
                     game.moveUp();
+                    game.addTwoInRandomEmptyCell();
                     System.out.println("////MOVING UP////");
                     break;
                 case "down":
                     game.moveDown();
+                    game.addTwoInRandomEmptyCell();
                     System.out.println("///MOVING DOWN///");
                     break;
                 case "left":
                     game.moveLeft();
+                    game.addTwoInRandomEmptyCell();
                     System.out.println("///MOVING LEFT///");
                     break;
                 case "right":
                     game.moveRight();
+                    game.addTwoInRandomEmptyCell();
                     System.out.println("//MOVING RIGHT///");
                     break;
                 default:
@@ -56,65 +59,7 @@ public class MainTest {
 
             game.printBoard();
         }
-            */
 
-
-        final int[] indice = {0};
-
-        String blah = "22éés2efg dd";
-        System.out.println(blah);
-        System.out.println(blah.toCharArray());
-
-        List<String> bbb = new ArrayList<>();
-        for ( char c : blah.toCharArray() ){
-            bbb.add(String.valueOf(c));
-        }
-
-        System.out.println(bbb);
-
-        long x = bbb.stream().filter(s -> s.equals("2")).count();
-
-        System.out.println(x);
-/*
-        game.printBoard();
-        TimeUnit.SECONDS.sleep(2);
-
-        System.out.println("/////////////////");
-        System.out.println("///MOVING DOWN///");
-        System.out.println("/////////////////");
-
-        game.moveDown();
-        game.printBoard();
-        TimeUnit.SECONDS.sleep(2);
-
-        System.out.println("/////////////////");
-        System.out.println("//MOVING RIGHT///");
-        System.out.println("/////////////////");
-
-        game.moveRight();
-        game.printBoard();
-        TimeUnit.SECONDS.sleep(2);
-
-        System.out.println("/////////////////");
-        System.out.println("///MOVING LEFT///");
-        System.out.println("/////////////////");
-
-        game.moveLeft();
-        game.printBoard();
-        TimeUnit.SECONDS.sleep(2);
-
-        System.out.println("/////////////////");
-        System.out.println("////MOVING UP////");
-        System.out.println("/////////////////");
-
-        game.moveUp();
-        game.printBoard();
-        TimeUnit.SECONDS.sleep(2);
-
-        System.out.println("/////////////////");
-        System.out.println("///////DONE//////");
-        System.out.println("/////////////////");
-  */
 
     }
 }

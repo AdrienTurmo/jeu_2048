@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.inOrder;
@@ -259,6 +260,38 @@ public class FeatureTest {
 
         assertThat(numberOfZeros).isEqualTo(initialNumberOfZeros-1);
         assertThat(numberOfTwos).isEqualTo(initialNumberOfTwos+1);
+    }
+
+    @Test
+    public void can_detect_if_no_more_moves_are_possible_and_return_the_highest_value_reached() throws Exception {
+        //given
+        board.addValueAtPosition(2,0,3);
+        board.addValueAtPosition(4,1,3);
+        board.addValueAtPosition(8,2,3);
+        board.addValueAtPosition(16,3,3);
+
+        board.addValueAtPosition(16,0,2);
+        board.addValueAtPosition(8,1,2);
+        board.addValueAtPosition(4,2,2);
+        board.addValueAtPosition(2,3,2);
+
+        board.addValueAtPosition(32,0,1);
+        board.addValueAtPosition(64,1,1);
+        board.addValueAtPosition(128,2,1);
+        board.addValueAtPosition(256,3,1);
+
+        board.addValueAtPosition(512,0,0);
+        board.addValueAtPosition(128,1,0);
+        board.addValueAtPosition(64,2,0);
+        board.addValueAtPosition(32,3,0);
+
+        //when
+
+        boolean gameOver = game.isOver();
+
+        //then
+
+        assertThat(gameOver).isTrue();
     }
 
     private int countNumberOfTwoInString(String text) {
