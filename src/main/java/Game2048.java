@@ -23,11 +23,11 @@ public class Game2048 {
         movingRules2048.moveLeft(board);
     }
 
-    public void printBoard() {
-        boardPrinter.printBoard(board);
+    public void moveRight() {
+        movingRules2048.moveRight(board);
     }
 
-    public void moveRight() {
-        throw new NotImplementedException();
+    public void printBoard() {
+        boardPrinter.printBoard(board);
     }
 }

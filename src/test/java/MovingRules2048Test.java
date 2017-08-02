@@ -217,4 +217,16 @@ public class MovingRules2048Test {
         assertThat(board.valueAtPosition(2,1)).isEqualTo(0);
         assertThat(board.valueAtPosition(3,1)).isEqualTo(0);
     }
+
+    @Test
+    public void move_right_should_move_the_cell_to_the_far_right() throws Exception {
+        board.put2AtPosition(0,0);
+        boolean boardHasMoved = movingRules2048.moveRight(board);
+
+        assertThat(boardHasMoved).isTrue();
+        assertThat(board.valueAtPosition(0,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(1,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(2,0)).isEqualTo(0);
+        assertThat(board.valueAtPosition(3,0)).isEqualTo(2);
+    }
 }

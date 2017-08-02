@@ -43,4 +43,11 @@ public class Game2048Test {
 
         verify(movingRules2048).moveLeft(board);
     }
+
+    @Test
+    public void should_move_cells_right() throws Exception {
+        game.moveRight();
+
+        verify(movingRules2048).moveRight(board);
+    }
 }
