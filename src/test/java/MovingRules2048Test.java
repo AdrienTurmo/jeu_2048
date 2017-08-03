@@ -281,7 +281,7 @@ public class MovingRules2048Test {
         assertThat(boardHasMoved).isTrue();
         assertThat(board.valueAtPosition(0,1)).isEqualTo(0);
         assertThat(board.valueAtPosition(1,1)).isEqualTo(0);
-        assertThat(board.valueAtPosition(2,1)).isEqualTo(2);
+        assertThat(board.valueAtPosition(2,1)).isEqualTo(2 );
         assertThat(board.valueAtPosition(3,1)).isEqualTo(4);
     }
 }

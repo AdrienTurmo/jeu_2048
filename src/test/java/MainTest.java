@@ -1,11 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MainTest {
 
@@ -16,11 +13,15 @@ public class MainTest {
         MovingRules2048 movingRules2048 = new MovingRules2048();
         Game2048 game = new Game2048(board, movingRules2048, boardPrinter);
 
+        /*
         for (int index = 0; index < 4; index++) {
             for (int j = 0; j < 4; j++) {
                 board.put2AtPosition(index, j);
             }
         }
+*/
+        game.addTwoInRandomEmptyCell();
+        game.addTwoInRandomEmptyCell();
 
         game.printBoard();
 
@@ -56,7 +57,10 @@ public class MainTest {
                     break;
             }
             System.out.println("/////////////////");
-
+            int r = new Random().nextInt(100);
+            if (r>75) {
+                game.addTwoInRandomEmptyCell();
+            }
             game.printBoard();
         }
 
