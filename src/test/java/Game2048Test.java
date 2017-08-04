@@ -70,6 +70,7 @@ public class Game2048Test {
         when(board.positionsOfZeros()).thenReturn(zeros);
 
         //when
+
         game.addTwoInRandomEmptyCell();
 
         //then
