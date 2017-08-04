@@ -5,14 +5,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -76,12 +73,14 @@ public class Game2048Test {
         game.addTwoInRandomEmptyCell();
 
         //then
+        ArgumentCaptor<Integer> number = ArgumentCaptor.forClass(Integer.class);
         ArgumentCaptor<Integer> columnIndex = ArgumentCaptor.forClass(Integer.class);
         ArgumentCaptor<Integer> rowIndex = ArgumentCaptor.forClass(Integer.class);
-        verify(board).put2AtPosition(columnIndex.capture(),rowIndex.capture());
+        verify(board).addValueAtPosition(number.capture(), columnIndex.capture(),rowIndex.capture());
 
-        SimpleEntry<Integer,Integer> twoPosition = new SimpleEntry<>(columnIndex.getValue(),rowIndex.getValue());
+        SimpleEntry<Integer,Integer> zeroFilledWithTwoPosition = new SimpleEntry<>(columnIndex.getValue(),rowIndex.getValue());
 
-        assertThat(zeros).contains(twoPosition);
+        assertThat(number.getValue()).isEqualTo(2);
+        assertThat(zeros).contains(zeroFilledWithTwoPosition);
     }
 }

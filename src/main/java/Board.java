@@ -1,6 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,8 +17,8 @@ public class Board {
 
     }
 
-    public void put2AtPosition(int columnIndex, int rowIndex) {
-        cellTable[columnIndex][rowIndex] = 2;
+    public void addValueAtPosition(int value, int columnIndex, int rowIndex) {
+        cellTable[columnIndex][rowIndex] += value;
     }
 
     public int valueAtPosition(int columnIndex, int rowIndex) {
@@ -34,10 +31,6 @@ public class Board {
 
     public int numberOfColumns() {
         return cellTable.length;
-    }
-
-    public void addValueAtPosition(int value, int columnIndex, int rowIndex) {
-        cellTable[columnIndex][rowIndex] += value;
     }
 
     public void setValueToZeroAtPosition(int columnIndex, int rowIndex) {

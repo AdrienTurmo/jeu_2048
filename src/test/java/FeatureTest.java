@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -8,7 +9,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.inOrder;
@@ -36,7 +36,7 @@ public class FeatureTest {
 
     @Test
     public void should_move_up() throws Exception {
-        board.put2AtPosition(0, 0);
+        board.addValueAtPosition(2, 0, 0);
 
         game.moveUp();
         game.printBoard();
@@ -56,8 +56,8 @@ public class FeatureTest {
 
     @Test
     public void should_move_up_and_merge_cells_if_they_have_same_value() throws Exception {
-        board.put2AtPosition(0, 3);
-        board.put2AtPosition(0, 2);
+        board.addValueAtPosition(2, 0, 3);
+        board.addValueAtPosition(2, 0, 2);
 
         game.moveUp();
         game.printBoard();
@@ -78,7 +78,7 @@ public class FeatureTest {
     @Test
     public void move_up_should_not_merge_cells_if_they_have_different_values() throws Exception {
         board.addValueAtPosition(4, 0, 3);
-        board.put2AtPosition(0, 2);
+        board.addValueAtPosition(2, 0, 2);
 
         game.moveUp();
         game.printBoard();
@@ -99,10 +99,10 @@ public class FeatureTest {
     @Test
     public void should_move_down_and_merge_cells_or_not() throws Exception {
         board.addValueAtPosition(4, 0, 3);
-        board.put2AtPosition(0, 2);
+        board.addValueAtPosition(2, 0, 2);
 
-        board.put2AtPosition(2, 3);
-        board.put2AtPosition(2, 1);
+        board.addValueAtPosition(2, 2, 3);
+        board.addValueAtPosition(2, 2, 1);
 
         game.moveDown();
         game.printBoard();
@@ -122,14 +122,14 @@ public class FeatureTest {
 
     @Test
     public void when_moving_vertically_cells_should_merge_only_once() throws Exception {
-        board.put2AtPosition(1, 3);
-        board.put2AtPosition(1, 2);
+        board.addValueAtPosition(2, 1, 3);
+        board.addValueAtPosition(2, 1, 2);
         board.addValueAtPosition(4, 1, 1);
 
-        board.put2AtPosition(3, 3);
-        board.put2AtPosition(3, 2);
-        board.put2AtPosition(3, 1);
-        board.put2AtPosition(3, 0);
+        board.addValueAtPosition(2, 3, 3);
+        board.addValueAtPosition(2, 3, 2);
+        board.addValueAtPosition(2, 3, 1);
+        board.addValueAtPosition(2, 3, 0);
 
         game.moveDown();
         game.printBoard();
@@ -150,19 +150,19 @@ public class FeatureTest {
     @Test
     public void can_move_left() throws Exception {
         board.addValueAtPosition(4, 1, 3);
-        board.put2AtPosition(3, 3);
+        board.addValueAtPosition(2, 3, 3);
 
-        board.put2AtPosition(1, 2);
-        board.put2AtPosition(3, 2);
+        board.addValueAtPosition(2, 1, 2);
+        board.addValueAtPosition(2, 3, 2);
 
-        board.put2AtPosition(0, 1);
-        board.put2AtPosition(1, 1);
-        board.put2AtPosition(2, 1);
-        board.put2AtPosition(3, 1);
+        board.addValueAtPosition(2, 0, 1);
+        board.addValueAtPosition(2, 1, 1);
+        board.addValueAtPosition(2, 2, 1);
+        board.addValueAtPosition(2, 3, 1);
 
-        board.put2AtPosition(1, 0);
-        board.put2AtPosition(2, 0);
-        board.put2AtPosition(3, 0);
+        board.addValueAtPosition(2, 1, 0);
+        board.addValueAtPosition(2, 2, 0);
+        board.addValueAtPosition(2, 3, 0);
 
         game.moveLeft();
         game.printBoard();
@@ -183,19 +183,19 @@ public class FeatureTest {
     @Test
     public void can_move_right() throws Exception {
         board.addValueAtPosition(4, 1, 3);
-        board.put2AtPosition(3, 3);
+        board.addValueAtPosition(2, 3, 3);
 
-        board.put2AtPosition(1, 2);
-        board.put2AtPosition(3, 2);
+        board.addValueAtPosition(2, 1, 2);
+        board.addValueAtPosition(2, 3, 2);
 
         board.addValueAtPosition(4, 0, 1);
         board.addValueAtPosition(4, 1, 1);
         board.addValueAtPosition(4, 2, 1);
         board.addValueAtPosition(4, 3, 1);
 
-        board.put2AtPosition(1, 0);
-        board.put2AtPosition(2, 0);
-        board.put2AtPosition(3, 0);
+        board.addValueAtPosition(2, 1, 0);
+        board.addValueAtPosition(2, 2, 0);
+        board.addValueAtPosition(2, 3, 0);
 
         game.moveRight();
         game.printBoard();
@@ -262,6 +262,7 @@ public class FeatureTest {
         assertThat(numberOfTwos).isEqualTo(initialNumberOfTwos+1);
     }
 
+    @Ignore
     @Test
     public void can_detect_if_no_more_moves_are_possible_and_return_the_highest_value_reached() throws Exception {
         //given

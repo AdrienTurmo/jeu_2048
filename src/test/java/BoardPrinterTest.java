@@ -25,7 +25,7 @@ public class BoardPrinterTest {
 
     @Test
     public void should_print_the_board() throws Exception {
-        board.put2AtPosition(0, 0);
+        board.addValueAtPosition(2, 0, 0);
 
         boardPrinter.printBoard(board);
 

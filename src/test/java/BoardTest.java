@@ -1,9 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,14 +27,14 @@ public class BoardTest {
 
     @Test
     public void should_put_2_in_the_0_0_cell() throws Exception {
-        board.put2AtPosition(0, 0);
+        board.addValueAtPosition(2, 0, 0);
 
         assertThat(board.valueAtPosition(0, 0)).isEqualTo(2);
     }
 
     @Test
     public void should_add_specified_value() throws Exception {
-        board.put2AtPosition(0,0);
+        board.addValueAtPosition(2, 0,0);
 
         board.addValueAtPosition(5,1,1);
         board.addValueAtPosition(2,0,0);
@@ -47,7 +45,7 @@ public class BoardTest {
 
     @Test
     public void should_set_value_at_zero() throws Exception {
-        board.put2AtPosition(0,0);
+        board.addValueAtPosition(2, 0,0);
 
         board.setValueToZeroAtPosition(0,0);
 
@@ -57,21 +55,21 @@ public class BoardTest {
     @Test
     public void should_return_a_list_of_zeros_positions_as_simple_entries() throws Exception {
         //given
-        board.put2AtPosition(0,1);
-        board.put2AtPosition(0,3);
+        board.addValueAtPosition(2, 0,1);
+        board.addValueAtPosition(2, 0,3);
 
-        board.put2AtPosition(1,0);
-        board.put2AtPosition(1,1);
-        board.put2AtPosition(1,3);
+        board.addValueAtPosition(2, 1,0);
+        board.addValueAtPosition(2, 1,1);
+        board.addValueAtPosition(2, 1,3);
 
-        board.put2AtPosition(2,0);
-        board.put2AtPosition(2,1);
-        board.put2AtPosition(2,2);
-        board.put2AtPosition(2,3);
+        board.addValueAtPosition(2, 2,0);
+        board.addValueAtPosition(2, 2,1);
+        board.addValueAtPosition(2, 2,2);
+        board.addValueAtPosition(2, 2,3);
 
-        board.put2AtPosition(3,0);
-        board.put2AtPosition(3,1);
-        board.put2AtPosition(3,3);
+        board.addValueAtPosition(2, 3,0);
+        board.addValueAtPosition(2, 3,1);
+        board.addValueAtPosition(2, 3,3);
 
         SimpleEntry<Integer,Integer> zeroIn0_0 = new SimpleEntry<>(0, 0);
         SimpleEntry<Integer,Integer> zeroIn0_2 = new SimpleEntry<>(0, 2);

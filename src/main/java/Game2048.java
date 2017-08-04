@@ -42,7 +42,7 @@ public class Game2048 {
             int columnIndex = positionsOfZeros.get(0).getKey();
             int rowIndex = positionsOfZeros.get(0).getValue();
 
-            board.put2AtPosition(columnIndex,rowIndex);
+            board.addValueAtPosition(2, columnIndex,rowIndex);
         }
 
     }

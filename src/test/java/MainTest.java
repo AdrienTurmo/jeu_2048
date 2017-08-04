@@ -16,7 +16,7 @@ public class MainTest {
         /*
         for (int index = 0; index < 4; index++) {
             for (int j = 0; j < 4; j++) {
-                board.put2AtPosition(index, j);
+                board.addValueAtPosition(index, j);
             }
         }
 */
@@ -26,28 +26,32 @@ public class MainTest {
         game.printBoard();
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println("Next move ?");
             String nextMove = bufferedReader.readLine().toLowerCase();
 
             System.out.println("/////////////////");
             switch (nextMove) {
                 case "up":
+                case "u":
                     game.moveUp();
                     game.addTwoInRandomEmptyCell();
                     System.out.println("////MOVING UP////");
                     break;
                 case "down":
+                case "d":
                     game.moveDown();
                     game.addTwoInRandomEmptyCell();
                     System.out.println("///MOVING DOWN///");
                     break;
                 case "left":
+                case "l":
                     game.moveLeft();
                     game.addTwoInRandomEmptyCell();
                     System.out.println("///MOVING LEFT///");
                     break;
                 case "right":
+                case "r":
                     game.moveRight();
                     game.addTwoInRandomEmptyCell();
                     System.out.println("//MOVING RIGHT///");
