@@ -21,10 +21,10 @@ public class SwingDisplay {
 
         int[][] intTable = board.getTable();
 
-        String firstLine = String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]);
-        String secondLine = String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]);
-        String thirdLine = String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]);
-        String forthLine = String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]);
+        String firstLine = String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]);
+        String secondLine = String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]);
+        String thirdLine = String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]);
+        String forthLine = String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]);
 
         JFrame frame2048 = new JFrame("2048");
 
@@ -33,11 +33,11 @@ public class SwingDisplay {
         JLabel l3 = new JLabel(thirdLine);
         JLabel l4 = new JLabel(forthLine);
         JLabel l5 = new JLabel("");
-        l1.setBounds(100, 100, 100, 50);
-        l2.setBounds(100, 150, 100, 50);
-        l3.setBounds(100, 200, 100, 50);
-        l4.setBounds(100, 250, 100, 50);
-        l5.setBounds(100, 450, 100, 50);
+        l1.setBounds(100, 100, 150, 50);
+        l2.setBounds(100, 150, 150, 50);
+        l3.setBounds(100, 200, 150, 50);
+        l4.setBounds(100, 250, 150, 50);
+        l5.setBounds(100, 450, 150, 50);
 
         Button up = new Button("Up");
         up.setBounds(300, 200, 30, 30);
@@ -51,39 +51,75 @@ public class SwingDisplay {
         up.addActionListener(e -> {
             game2048.moveUp();
             game2048.addTwoInRandomEmptyCell();
-            l1.setText(String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
-            l2.setText(String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
-            l3.setText(String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
-            l4.setText(String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
+            l1.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
+            l2.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
+            l3.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
+            l4.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
         });
 
         down.addActionListener(e -> {
             game2048.moveDown();
             game2048.addTwoInRandomEmptyCell();
-            l1.setText(String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
-            l2.setText(String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
-            l3.setText(String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
-            l4.setText(String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
+            l1.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
+            l2.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
+            l3.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
+            l4.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
         });
 
         right.addActionListener(e -> {
             game2048.moveRight();
             game2048.addTwoInRandomEmptyCell();
-            l1.setText(String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
-            l2.setText(String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
-            l3.setText(String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
-            l4.setText(String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
+            l1.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
+            l2.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
+            l3.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
+            l4.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
         });
 
         left.addActionListener(e -> {
             game2048.moveLeft();
             game2048.addTwoInRandomEmptyCell();
-            l1.setText(String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
-            l2.setText(String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
-            l3.setText(String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
-            l4.setText(String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
+            l1.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
+            l2.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
+            l3.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
+            l4.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
         });
 
+
+        up.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP:
+                        game2048.moveUp();
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        game2048.moveDown();
+                        break;
+                    case KeyEvent.VK_LEFT:
+                        game2048.moveLeft();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        game2048.moveRight();
+                        break;
+                    default:
+                        break;
+
+                }
+                game2048.addTwoInRandomEmptyCell();
+                l1.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
+                l2.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
+                l3.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
+                l4.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
 
 
         frame2048.add(l1);
@@ -97,41 +133,6 @@ public class SwingDisplay {
         frame2048.add(left);
         frame2048.add(right);
 
-        frame2048.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                    if(e.getKeyCode() == KeyEvent.VK_C) {
-                        game2048.moveUp();
-                        game2048.addTwoInRandomEmptyCell();
-                        l1.setText(String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
-                        l2.setText(String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
-                        l3.setText(String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
-                        l4.setText(String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
-                    }
-                    /*
-                    case KeyEvent.VK_A:
-                        game2048.moveDown();
-                        game2048.addTwoInRandomEmptyCell();
-                        l1.setText(String.format("%s   %s   %s   %s", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
-                        l2.setText(String.format("%s   %s   %s   %s", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
-                        l3.setText(String.format("%s   %s   %s   %s", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));
-                        l4.setText(String.format("%s   %s   %s   %s", intTable[0][0], intTable[1][0], intTable[2][0], intTable[3][0]));
-                        break;
-                    default:
-                        break;
-                        */
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
 
         frame2048.add(l5);
 
