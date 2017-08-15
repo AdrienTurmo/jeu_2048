@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Board {
-    int[][] cellTable;
+    private int[][] cellTable;
 
     public Board(int nbColumns, int nbRows) {
         cellTable = new int[nbColumns][nbRows];
@@ -64,5 +64,10 @@ public class Board {
     @Override
     public int hashCode() {
         return Arrays.hashCode(cellTable);
+    }
+
+
+    public int[][] getTable() {
+        return cellTable;
     }
 }
