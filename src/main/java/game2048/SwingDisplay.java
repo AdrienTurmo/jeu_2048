@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 public class SwingDisplay {
 
@@ -110,6 +111,10 @@ public class SwingDisplay {
 
                 }
                 game2048.addTwoInRandomEmptyCell();
+                int r = new Random().nextInt(100);
+                if (r>75) {
+                    game2048.addTwoInRandomEmptyCell();
+                }
                 l1.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][3], intTable[1][3], intTable[2][3], intTable[3][3]));
                 l2.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][2], intTable[1][2], intTable[2][2], intTable[3][2]));
                 l3.setText(String.format("|%-5s|%-5s|%-5s|%-5s|", intTable[0][1], intTable[1][1], intTable[2][1], intTable[3][1]));

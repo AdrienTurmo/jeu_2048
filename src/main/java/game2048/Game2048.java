@@ -16,20 +16,20 @@ public class Game2048 {
         this.boardPrinter = boardPrinter;
     }
 
-    public void moveUp() {
-        movingRules2048.moveUp(board);
+    public boolean moveUp() {
+       return movingRules2048.moveUp(board);
     }
 
-    public void moveDown() {
-        movingRules2048.moveDown(board);
+    public boolean moveDown() {
+        return movingRules2048.moveDown(board);
     }
 
-    public void moveLeft() {
-        movingRules2048.moveLeft(board);
+    public boolean moveLeft() {
+        return movingRules2048.moveLeft(board);
     }
 
-    public void moveRight() {
-        movingRules2048.moveRight(board);
+    public boolean moveRight() {
+        return movingRules2048.moveRight(board);
     }
 
     public void printBoard() {
@@ -37,14 +37,14 @@ public class Game2048 {
     }
 
     public void addTwoInRandomEmptyCell() {
-        List<SimpleEntry<Integer,Integer>> positionsOfZeros = board.positionsOfZeros();
+        List<SimpleEntry<Integer, Integer>> positionsOfZeros = board.positionsOfZeros();
 
         if (positionsOfZeros.size() != 0) {
             Collections.shuffle(positionsOfZeros);
             int columnIndex = positionsOfZeros.get(0).getKey();
             int rowIndex = positionsOfZeros.get(0).getValue();
 
-            board.addValueAtPosition(2, columnIndex,rowIndex);
+            board.addValueAtPosition(2, columnIndex, rowIndex);
         }
 
     }
