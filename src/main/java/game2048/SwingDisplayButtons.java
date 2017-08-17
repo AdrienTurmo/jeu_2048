@@ -41,8 +41,6 @@ public class SwingDisplayButtons {
 
         l5.setBounds(100, 450, 150, 50);
 
-
-
         frame2048.add(l5);
 
         frame2048.setSize(265, 285);
@@ -52,50 +50,55 @@ public class SwingDisplayButtons {
     }
 
     private static Color numberToColor(int value) {
-        int exposant = (int) Math.round(Math.log(value)/Math.log(2));
-        return new Color(250,255-20*exposant,255-20*exposant);
+        int exponent = (int) Math.round(Math.log(value) / Math.log(2));
+        return new Color(250, 255 - 20 * exponent, 255 - 20 * exponent);
     }
 
     private static KeyListener customListener(Game2048 game2048, int[][] intTable, Button[][] buttons) {
         return new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                boolean boardHasMoved = false;
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP:
-                        game2048.moveUp();
+                        boardHasMoved = game2048.moveUp();
                         break;
                     case KeyEvent.VK_DOWN:
-                        game2048.moveDown();
+                        boardHasMoved = game2048.moveDown();
                         break;
                     case KeyEvent.VK_LEFT:
-                        game2048.moveLeft();
+                        boardHasMoved = game2048.moveLeft();
                         break;
                     case KeyEvent.VK_RIGHT:
-                        game2048.moveRight();
+                        boardHasMoved = game2048.moveRight();
                         break;
                     default:
                         break;
 
                 }
-                game2048.addTwoInRandomEmptyCell();
-                int r = new Random().nextInt(100);
-                if (r > 75) {
+                if (boardHasMoved) {
                     game2048.addTwoInRandomEmptyCell();
-                }
-                for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
-                    for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
-                        buttons[columnIndex][rowIndex].setLabel(String.valueOf(intTable[columnIndex][rowIndex]));
-                        buttons[columnIndex][rowIndex].setBackground(numberToColor(intTable[columnIndex][rowIndex]));
+                    int r = new Random().nextInt(100);
+                    if (r > 75) {
+                        game2048.addTwoInRandomEmptyCell();
+                    }
+                    for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
+                        for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
+                            buttons[columnIndex][rowIndex].setLabel(String.valueOf(intTable[columnIndex][rowIndex]));
+                            buttons[columnIndex][rowIndex].setBackground(numberToColor(intTable[columnIndex][rowIndex]));
+                        }
                     }
                 }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
             }
         };
     }
