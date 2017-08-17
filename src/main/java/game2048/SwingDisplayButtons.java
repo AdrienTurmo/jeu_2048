@@ -31,11 +31,10 @@ public class SwingDisplayButtons {
                 buttons[columnIndex][rowIndex] = new Button(String.valueOf(intTable[columnIndex][rowIndex]));
                 buttons[columnIndex][rowIndex].setBounds(20+columnIndex*50, 20+(3-rowIndex)*50,50,50);
                 buttons[columnIndex][rowIndex].addKeyListener(customListener(game2048,intTable,buttons));
+                buttons[columnIndex][rowIndex].setBackground(numberToColor(intTable[columnIndex][rowIndex]));
                 frame2048.add(buttons[columnIndex][rowIndex]);
             }
         }
-
-
 
 
         JLabel l5 = new JLabel("");
@@ -46,9 +45,15 @@ public class SwingDisplayButtons {
 
         frame2048.add(l5);
 
-        frame2048.setSize(500, 500);
+        frame2048.setSize(265, 285);
+        frame2048.setLocation(800,400);
         frame2048.setVisible(true);
         frame2048.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private static Color numberToColor(int value) {
+        int exposant = (int) Math.round(Math.log(value)/Math.log(2));
+        return new Color(250,255-20*exposant,255-20*exposant);
     }
 
     private static KeyListener customListener(Game2048 game2048, int[][] intTable, Button[][] buttons) {
@@ -84,6 +89,7 @@ public class SwingDisplayButtons {
                 for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
                     for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
                         buttons[columnIndex][rowIndex].setLabel(String.valueOf(intTable[columnIndex][rowIndex]));
+                        buttons[columnIndex][rowIndex].setBackground(numberToColor(intTable[columnIndex][rowIndex]));
                     }
                 }
             }
