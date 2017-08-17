@@ -1,0 +1,98 @@
+package game2048;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Random;
+
+public class SwingDisplayButtons {
+
+    public static void main(String[] args) {
+
+        Printer consolePrinter = new ConsolePrinter();
+        Board board = new Board(4, 4);
+        BoardPrinter boardPrinter = new BoardPrinter(consolePrinter);
+        MovingRules2048 movingRules2048 = new MovingRules2048();
+        Game2048 game2048 = new Game2048(board, movingRules2048, boardPrinter);
+
+
+        game2048.addTwoInRandomEmptyCell();
+        game2048.addTwoInRandomEmptyCell();
+
+        int[][] intTable = board.getTable();
+
+        JFrame frame2048 = new JFrame("2048");
+
+        Button[][] buttons = new Button[4][4];
+
+        for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
+            for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
+                buttons[columnIndex][rowIndex] = new Button(String.valueOf(intTable[columnIndex][rowIndex]));
+                buttons[columnIndex][rowIndex].setBounds(20+columnIndex*50, 20+(3-rowIndex)*50,50,50);
+                buttons[columnIndex][rowIndex].addKeyListener(customListener(game2048,intTable,buttons));
+                frame2048.add(buttons[columnIndex][rowIndex]);
+            }
+        }
+
+
+
+
+        JLabel l5 = new JLabel("");
+
+        l5.setBounds(100, 450, 150, 50);
+
+
+
+        frame2048.add(l5);
+
+        frame2048.setSize(500, 500);
+        frame2048.setVisible(true);
+        frame2048.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private static KeyListener customListener(Game2048 game2048, int[][] intTable, Button[][] buttons) {
+        return new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP:
+                        game2048.moveUp();
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        game2048.moveDown();
+                        break;
+                    case KeyEvent.VK_LEFT:
+                        game2048.moveLeft();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        game2048.moveRight();
+                        break;
+                    default:
+                        break;
+
+                }
+                game2048.addTwoInRandomEmptyCell();
+                int r = new Random().nextInt(100);
+                if (r > 75) {
+                    game2048.addTwoInRandomEmptyCell();
+                }
+                for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
+                    for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
+                        buttons[columnIndex][rowIndex].setLabel(String.valueOf(intTable[columnIndex][rowIndex]));
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+    }
+
+
+}
