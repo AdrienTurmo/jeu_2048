@@ -26,15 +26,18 @@ public class SwingDisplayButtons {
 
         Button[][] buttons = new Button[4][4];
 
+
         for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
             for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
                 buttons[columnIndex][rowIndex] = new Button(String.valueOf(intTable[columnIndex][rowIndex]));
                 buttons[columnIndex][rowIndex].setBounds(20+columnIndex*50, 20+(3-rowIndex)*50,50,50);
-                buttons[columnIndex][rowIndex].addKeyListener(customListener(game2048,intTable,buttons));
+                buttons[columnIndex][rowIndex].addKeyListener(customListener(game2048,intTable,buttons,frame2048));
                 buttons[columnIndex][rowIndex].setBackground(numberToColor(intTable[columnIndex][rowIndex]));
                 frame2048.add(buttons[columnIndex][rowIndex]);
             }
         }
+
+
 
         JLabel l5 = new JLabel("");
 
@@ -46,6 +49,7 @@ public class SwingDisplayButtons {
         frame2048.setLocation(800,400);
         frame2048.setVisible(true);
         frame2048.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     private static Color numberToColor(int value) {
@@ -53,7 +57,7 @@ public class SwingDisplayButtons {
         return new Color(250, 255 - 20 * exponent, 255 - 20 * exponent);
     }
 
-    private static KeyListener customListener(Game2048 game2048, int[][] intTable, Button[][] buttons) {
+    private static KeyListener customListener(Game2048 game2048, int[][] intTable, Button[][] buttons,Frame frame) {
         return new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -62,7 +66,9 @@ public class SwingDisplayButtons {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
+                if (game2048.isOver()) {
+                    JOptionPane.showMessageDialog(frame.getComponent(0), "You lost!");
+                }
             }
 
             @Override
