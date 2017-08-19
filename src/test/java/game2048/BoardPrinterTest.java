@@ -1,8 +1,5 @@
 package game2048;
 
-import game2048.Board;
-import game2048.BoardPrinter;
-import game2048.Printer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +7,6 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.inOrder;
 
 @RunWith(MockitoJUnitRunner.class)

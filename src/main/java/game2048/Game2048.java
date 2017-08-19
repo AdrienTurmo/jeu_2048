@@ -50,6 +50,6 @@ public class Game2048 {
     }
 
     public boolean isOver() {
-        throw new NotImplementedException();
+        return !board.areMovesStillPossible();
     }
 }

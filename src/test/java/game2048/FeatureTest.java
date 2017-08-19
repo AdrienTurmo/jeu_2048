@@ -1,6 +1,5 @@
 package game2048;
 
-import game2048.*;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -14,26 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FeatureTest {
 
     private Board board;
-    private BoardPrinter boardPrinter;
-    private MovingRules2048 movingRules2048;
     private Game2048 game;
 
     @Mock
+    private
     Printer printer;
 
     @Before
     public void setUp() throws Exception {
         board = new Board(4, 4);
-        boardPrinter = new BoardPrinter(printer);
-        movingRules2048 = new MovingRules2048();
+        BoardPrinter boardPrinter = new BoardPrinter(printer);
+        MovingRules2048 movingRules2048 = new MovingRules2048();
         game = new Game2048(board, movingRules2048, boardPrinter);
     }
 
@@ -265,9 +261,8 @@ public class FeatureTest {
         assertThat(numberOfTwos).isEqualTo(initialNumberOfTwos+1);
     }
 
-    @Ignore
     @Test
-    public void can_detect_if_no_more_moves_are_possible_and_return_the_highest_value_reached() throws Exception {
+    public void can_detect_if_no_more_moves_are_possible() throws Exception {
         //given
         board.addValueAtPosition(2,0,3);
         board.addValueAtPosition(4,1,3);
@@ -297,6 +292,7 @@ public class FeatureTest {
 
         assertThat(gameOver).isTrue();
     }
+
 
     private int countNumberOfTwoInString(String text) {
         List<String> characters = new ArrayList<>();

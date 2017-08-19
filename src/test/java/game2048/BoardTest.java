@@ -1,7 +1,7 @@
 package game2048;
 
-import game2048.Board;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.AbstractMap.SimpleEntry;
@@ -89,5 +89,69 @@ public class BoardTest {
         assertThat(zeros).contains(expectedZeros.get(1));
         assertThat(zeros).contains(expectedZeros.get(2));
         assertThat(zeros).contains(expectedZeros.get(3));
+    }
+
+    @Test
+    public void should_tell_if_no_move_are_possible() throws Exception {
+        //given
+        board.addValueAtPosition(2, 0,0);
+        board.addValueAtPosition(8, 0,1);
+        board.addValueAtPosition(64, 0,2);
+        board.addValueAtPosition(128, 0,3);
+
+        board.addValueAtPosition(8, 1,0);
+        board.addValueAtPosition(64, 1,1);
+        board.addValueAtPosition(128, 1,2);
+        board.addValueAtPosition(256, 1,3);
+
+        board.addValueAtPosition(64, 2,0);
+        board.addValueAtPosition(128, 2,1);
+        board.addValueAtPosition(256, 2,2);
+        board.addValueAtPosition(512, 2,3);
+
+        board.addValueAtPosition(128, 3,0);
+        board.addValueAtPosition(256, 3,1);
+        board.addValueAtPosition(512, 3,2);
+        board.addValueAtPosition(1024, 3,3);
+
+        //when
+
+        boolean canStillMove = board.areMovesStillPossible();
+
+
+        //then
+        assertThat(canStillMove).isFalse();
+    }
+
+    @Test
+    public void should_tell_that_moves_are_still_possible() throws Exception {
+        //given
+        board.addValueAtPosition(8, 0,0);
+        board.addValueAtPosition(8, 0,1);
+        board.addValueAtPosition(64, 0,2);
+        board.addValueAtPosition(128, 0,3);
+
+        board.addValueAtPosition(8, 1,0);
+        board.addValueAtPosition(64, 1,1);
+        board.addValueAtPosition(128, 1,2);
+        board.addValueAtPosition(256, 1,3);
+
+        board.addValueAtPosition(64, 2,0);
+        board.addValueAtPosition(128, 2,1);
+        board.addValueAtPosition(256, 2,2);
+        board.addValueAtPosition(512, 2,3);
+
+        board.addValueAtPosition(128, 3,0);
+        board.addValueAtPosition(256, 3,1);
+        board.addValueAtPosition(512, 3,2);
+        board.addValueAtPosition(1024, 3,3);
+
+        //when
+
+        boolean canStillMove = board.areMovesStillPossible();
+
+
+        //then
+        assertThat(canStillMove).isTrue();
     }
 }

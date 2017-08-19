@@ -36,7 +36,6 @@ public class SwingDisplayButtons {
             }
         }
 
-
         JLabel l5 = new JLabel("");
 
         l5.setBounds(100, 450, 150, 50);

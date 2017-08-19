@@ -16,7 +16,6 @@ public class Board {
                 cellTable[columnIndex][rowIndex] = 0;
             }
         }
-
     }
 
     public void addValueAtPosition(int value, int columnIndex, int rowIndex) {
@@ -44,13 +43,31 @@ public class Board {
 
         for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
             for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
-                if (valueAtPosition(columnIndex,rowIndex)==0){
-                 zeros.add(new SimpleEntry<>(columnIndex, rowIndex));
+                if (valueAtPosition(columnIndex, rowIndex) == 0) {
+                    zeros.add(new SimpleEntry<>(columnIndex, rowIndex));
                 }
             }
         }
 
         return zeros;
+    }
+
+    public boolean areMovesStillPossible() {
+
+        boolean aMoveIsPossible = false;
+
+        for (int rowIndex = 0; rowIndex < numberOfRows()-1; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns()-1; columnIndex++) {
+                if ((valueAtPosition(columnIndex, rowIndex) == 0)||(valueAtPosition(columnIndex+1, rowIndex) == 0)||(valueAtPosition(columnIndex, rowIndex+1) == 0)) {
+                    aMoveIsPossible = true;
+                }
+                if ((valueAtPosition(columnIndex, rowIndex) == valueAtPosition(columnIndex, rowIndex+1))||(valueAtPosition(columnIndex, rowIndex) == valueAtPosition(columnIndex+1, rowIndex))) {
+                    aMoveIsPossible = true;
+                }
+            }
+        }
+
+        return aMoveIsPossible;
     }
 
     @Override
@@ -70,4 +87,5 @@ public class Board {
     public int[][] getTable() {
         return cellTable;
     }
+
 }
