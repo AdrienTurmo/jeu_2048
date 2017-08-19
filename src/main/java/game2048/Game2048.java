@@ -1,9 +1,8 @@
 package game2048;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
+import java.util.List;
 
 public class Game2048 {
     private Board board;
@@ -17,7 +16,7 @@ public class Game2048 {
     }
 
     public boolean moveUp() {
-       return movingRules2048.moveUp(board);
+        return movingRules2048.moveUp(board);
     }
 
     public boolean moveDown() {
@@ -52,4 +51,5 @@ public class Game2048 {
     public boolean isOver() {
         return !board.areMovesStillPossible();
     }
+
 }

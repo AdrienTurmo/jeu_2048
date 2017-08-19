@@ -56,12 +56,37 @@ public class Board {
 
         boolean aMoveIsPossible = false;
 
-        for (int rowIndex = 0; rowIndex < numberOfRows()-1; rowIndex++) {
-            for (int columnIndex = 0; columnIndex < numberOfColumns()-1; columnIndex++) {
-                if ((valueAtPosition(columnIndex, rowIndex) == 0)||(valueAtPosition(columnIndex+1, rowIndex) == 0)||(valueAtPosition(columnIndex, rowIndex+1) == 0)) {
+        for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
+                if (valueAtPosition(columnIndex, rowIndex) == 0) {
                     aMoveIsPossible = true;
                 }
-                if ((valueAtPosition(columnIndex, rowIndex) == valueAtPosition(columnIndex, rowIndex+1))||(valueAtPosition(columnIndex, rowIndex) == valueAtPosition(columnIndex+1, rowIndex))) {
+            }
+        }
+        for (int rowIndex = 0; rowIndex < numberOfRows()-1; rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
+                if (valueAtPosition(columnIndex, rowIndex+1) == valueAtPosition(columnIndex, rowIndex)) {
+                    aMoveIsPossible = true;
+                }
+            }
+        }
+        for (int rowIndex = 1; rowIndex < numberOfRows(); rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
+                if (valueAtPosition(columnIndex, rowIndex-1) == valueAtPosition(columnIndex, rowIndex)) {
+                    aMoveIsPossible = true;
+                }
+            }
+        }
+        for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns()-1; columnIndex++) {
+                if (valueAtPosition(columnIndex+1, rowIndex) == valueAtPosition(columnIndex, rowIndex)) {
+                    aMoveIsPossible = true;
+                }
+            }
+        }
+        for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
+            for (int columnIndex = 1; columnIndex < numberOfColumns(); columnIndex++) {
+                if (valueAtPosition(columnIndex-1, rowIndex) == valueAtPosition(columnIndex, rowIndex)) {
                     aMoveIsPossible = true;
                 }
             }
