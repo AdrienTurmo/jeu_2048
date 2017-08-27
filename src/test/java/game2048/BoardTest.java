@@ -1,7 +1,6 @@
 package game2048;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.AbstractMap.SimpleEntry;
@@ -21,6 +20,7 @@ public class BoardTest {
 
     @Test
     public void should_create_a_board_with_empty_cells() throws Exception {
+        Board board = new Board(4, 4);
         for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
             for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
                 assertThat(board.valueAtPosition(rowIndex, columnIndex)).isEqualTo(0);

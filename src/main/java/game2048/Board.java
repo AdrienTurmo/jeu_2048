@@ -4,6 +4,7 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public class Board {
     private int[][] cellTable;
@@ -41,6 +42,7 @@ public class Board {
     public List<SimpleEntry<Integer, Integer>> positionsOfZeros() {
         List<SimpleEntry<Integer, Integer>> zeros = new ArrayList<>();
 
+
         for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
             for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
                 if (valueAtPosition(columnIndex, rowIndex) == 0) {
@@ -54,46 +56,53 @@ public class Board {
 
     public boolean areMovesStillPossible() {
 
-        boolean aMoveIsPossible = false;
-
         for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
             for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
                 if (valueAtPosition(columnIndex, rowIndex) == 0) {
-                    aMoveIsPossible = true;
+                    return true;
                 }
             }
         }
-        for (int rowIndex = 0; rowIndex < numberOfRows()-1; rowIndex++) {
+        for (int rowIndex = 0; rowIndex < numberOfRows() - 1; rowIndex++) {
             for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
-                if (valueAtPosition(columnIndex, rowIndex+1) == valueAtPosition(columnIndex, rowIndex)) {
-                    aMoveIsPossible = true;
+                if (valueAtPosition(columnIndex, rowIndex + 1) == valueAtPosition(columnIndex, rowIndex)) {
+                    return true;
                 }
             }
         }
         for (int rowIndex = 1; rowIndex < numberOfRows(); rowIndex++) {
             for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
-                if (valueAtPosition(columnIndex, rowIndex-1) == valueAtPosition(columnIndex, rowIndex)) {
-                    aMoveIsPossible = true;
+                if (valueAtPosition(columnIndex, rowIndex - 1) == valueAtPosition(columnIndex, rowIndex)) {
+                    return true;
                 }
             }
         }
         for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
-            for (int columnIndex = 0; columnIndex < numberOfColumns()-1; columnIndex++) {
-                if (valueAtPosition(columnIndex+1, rowIndex) == valueAtPosition(columnIndex, rowIndex)) {
-                    aMoveIsPossible = true;
+            for (int columnIndex = 0; columnIndex < numberOfColumns() - 1; columnIndex++) {
+                if (valueAtPosition(columnIndex + 1, rowIndex) == valueAtPosition(columnIndex, rowIndex)) {
+                    return true;
                 }
             }
         }
         for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
             for (int columnIndex = 1; columnIndex < numberOfColumns(); columnIndex++) {
-                if (valueAtPosition(columnIndex-1, rowIndex) == valueAtPosition(columnIndex, rowIndex)) {
-                    aMoveIsPossible = true;
+                if (valueAtPosition(columnIndex - 1, rowIndex) == valueAtPosition(columnIndex, rowIndex)) {
+                    return true;
                 }
             }
         }
 
-        return aMoveIsPossible;
+        return false;
     }
+
+    private void forEachCell(Function<Object, Integer> function) {
+        for (int rowIndex = 0; rowIndex < numberOfRows(); rowIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns(); columnIndex++) {
+                function.apply(valueAtPosition(columnIndex, rowIndex));
+            }
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {
